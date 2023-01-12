@@ -1,8 +1,8 @@
 const celdas = []; //4x4
-const RETICULA = 10;
+const RETICULA = 5;
 
 const azulejos = [];
-const NA = 16; //numero de azulejos
+const NA = 37; //numero de azulejos
 let opcionesI = [];
 
 
@@ -140,8 +140,161 @@ const reglas = [
     LEFT: 2,
 
   },
+  {
+    // tile 16
+    UP: 0,
+    RIGHT: 0,
+    DOWN: 0,
+    LEFT: 0,
 
+  },
+  {
+    // tile 17
+    UP: 0,
+    RIGHT: 1,
+    DOWN: 3,
+    LEFT: 0,
 
+  },
+  {
+    // tile 18
+    UP: 0,
+    RIGHT: 0,
+    DOWN: 4,
+    LEFT: 1,
+
+  },
+  {
+    // tile 19
+    UP: 3,
+    RIGHT: 2,
+    DOWN: 4,
+    LEFT: 1,
+
+  },
+  {
+    // tile 20
+    UP: 3,
+    RIGHT: 1,
+    DOWN: 3,
+    LEFT: 1,
+
+  },
+  {
+    // tile 21
+    UP: 3,
+    RIGHT: 2,
+    DOWN: 0,
+    LEFT: 0,
+
+  },
+  {
+    // tile 22
+    UP: 4,
+    RIGHT: 0,
+    DOWN: 0,
+    LEFT: 2,
+
+  },
+  {
+    // tile 23
+    UP: 4,
+    RIGHT: 1,
+    DOWN: 3,
+    LEFT: 2,
+
+  },
+  {
+    // tile 24
+    UP: 4,
+    RIGHT: 2,
+    DOWN: 4,
+    LEFT: 2,
+  },
+  {
+    // tile 25
+    UP: 3,
+    RIGHT: 2,
+    DOWN: 3,
+    LEFT: 2,
+  },
+  {
+    // tile 26
+    UP: 0,
+    RIGHT: 1,
+    DOWN: 4,
+    LEFT: 1,
+  },
+  {
+    // tile 27
+    UP: 4,
+    RIGHT: 1,
+    DOWN: 4,
+    LEFT: 0,
+  },
+  {
+    // tile 28
+    UP: 3,
+    RIGHT: 1,
+    DOWN: 0,
+    LEFT: 2,
+  },
+  {
+    // tile 29
+    UP: 4,
+    RIGHT: 2,
+    DOWN: 0,
+    LEFT: 1,
+  },
+  {
+    // tile 30
+    UP: 3,
+    RIGHT: 1,
+    DOWN: 4,
+    LEFT: 2,
+  },
+  {
+    // tile 31
+    UP: 3,
+    RIGHT: 1,
+    DOWN: 3,
+    LEFT: 0,
+  },
+  {
+    // tile 32
+    UP: 0,
+    RIGHT: 2,
+    DOWN: 4,
+    LEFT: 2,
+  },
+  {
+    // tile 33
+    UP: 0,
+    RIGHT: 2,
+    DOWN: 3,
+    LEFT: 2,
+  },
+  {
+    // tile 34
+    UP: 0,
+    RIGHT: 1,
+    DOWN: 3,
+    LEFT: 1,
+  },
+  {
+    // tile 35
+    UP: 4,
+    RIGHT: 2,
+    DOWN: 4,
+    LEFT: 0,
+  },
+  {
+    // tile 36
+    UP: 3,
+    RIGHT: 2,
+    DOWN: 3,
+    LEFT: 0,
+  },
 ];
 
 function preload() {
@@ -175,8 +328,11 @@ function setup() {
 function draw() {
   //background(255);
 
+  const celdasConOpciones = celdas.filter((celda) => {
+    return celda.opciones.length > 0;
+  });
 
-  const celdasDisponibles = celdas.filter((celda) => {
+  const celdasDisponibles = celdasConOpciones.filter((celda) => {
     return celda.colapsada == false;
   });
   if (celdasDisponibles.length > 0) {
@@ -288,6 +444,8 @@ function cambiarEntropia(_celda, _regla, _opuesta) {
       nuevasOpciones.push(celdaCompatible);
     }
   }
+
+  //if(_nuevasOpciones)
   _celda.opciones = nuevasOpciones;
   //print(nuevasOpciones);
 }
